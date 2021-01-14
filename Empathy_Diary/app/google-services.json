@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "442686102202",
+    "project_id": "madcamp-week3-ca61c",
+    "storage_bucket": "madcamp-week3-ca61c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442686102202:android:777de6966b6edc2e28c083",
+        "android_client_info": {
+          "package_name": "com.example.empathy_diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442686102202-f37u9glbti9btdranin453kovcqq02dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2yec4FpPFf4K21TqG0NjoOCs7o6YU2zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442686102202-f37u9glbti9btdranin453kovcqq02dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
-
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -42,4 +42,17 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+//    implementation 'com.google.firebase:firebase-core:18.0.0'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    // Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.8.0'
+    // Retrofit2-Gson converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
 }
