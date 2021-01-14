@@ -64,6 +64,7 @@ class GoogleLoginActivity : AppCompatActivity(){
 
         if(requestCode == RC_STIGN_IN){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            Log.d("Task", task.toString())
             try{
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
