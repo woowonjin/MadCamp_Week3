@@ -22,15 +22,48 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="10dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_feed"
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
+<!--        <com.reginald.swiperefresh.CustomSwipeRefreshLayout-->
+<!--            android:id="@+id/swipe_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:enable_top_progress_bar="true"-->
+<!--            app:keep_refresh_head="true"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--            app:refresh_mode="pull_mode"-->
+<!--            app:return_to_header_duration="500"-->
+<!--            app:return_to_top_duration="500"-->
+<!--            app:time_out_refresh_complete="2000"-->
+<!--            app:time_out_return_to_top="1000"-->
+<!--            app:top_progress_bar_color_1="@color/teal_200"-->
+<!--            app:top_progress_bar_color_2="#ee5522"-->
+<!--            app:top_progress_bar_color_3="#ffa600"-->
+<!--            app:top_progress_bar_color_4="@color/teal_200">-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_feed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+<!--        </com.reginald.swiperefresh.CustomSwipeRefreshLayout>-->
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -47,28 +80,67 @@
 <!--        android:layout_gravity="left"-->
 
         <TextView
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="20dp"
-            android:text="Hi"
-            android:textSize="22sp" />
-
-        <TextView
             android:id="@+id/todayDiary"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="오늘의 일기"
-            android:textSize="22sp"
-            android:clickable="true">
+            android:textSize="21sp"
+            android:clickable="true"
+            android:layout_marginTop="100dp"/>
 
-        </TextView>
+        <TextView
+            android:id="@+id/textView_myDiary"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="모아보기"
+            android:textSize="21sp"
+            android:clickable="true"
+            android:layout_marginTop="14dp"/>
 
+        <TextView
+            android:id="@+id/textView_Similar"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="비슷한거"
+            android:textSize="21sp"
+            android:clickable="true"
+            android:layout_marginTop="14dp"/>
 
+        <TextView
+            android:id="@+id/textView_Different"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="다른거"
+            android:textSize="21sp"
+            android:clickable="true"
+            android:layout_marginTop="14dp"/>
 
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="310dp"
+            android:layout_marginLeft="8dp">
 
+            <ImageView
+                android:id="@+id/imageView_logout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/logout"/>
+
+            <TextView
+                android:id="@+id/textView_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그아웃"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
