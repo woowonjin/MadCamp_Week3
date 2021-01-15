@@ -19,10 +19,15 @@ import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.JsonElement
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
     private var googleSignInClient : GoogleSignInClient? = null
+    private var retrofitClient = RetrofitClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,15 +52,32 @@ class MainActivity : AppCompatActivity() {
         findViewById<DrawerLayout>(R.id.drawerLayout).closeDrawer(Gravity.LEFT)
 
         var feedList = arrayListOf<Item_feed>()
-        feedList.add(Item_feed("12/20", "날씨가 좋았다"))
-
-        feedList.add(Item_feed("12/21", "날씨가 흐렸다"))
-
-        feedList.add(Item_feed("12/22", "비가\n 왔다"))
-
-        feedList.add(Item_feed("12/23", "눈\n이\n왔\n다"))
 
         val mAdapter = FeedAdapter(this, feedList)
+
+        val call = retrofitClient.apiService.getFeeds()
+        call!!.enqueue(object: Callback<ArrayList<Item_feed>> {
+            override fun onFailure(call: Call<ArrayList<Item_feed>>, t: Throwable) {
+                Log.d("Error", "Get Feeds Error")
+            }
+
+            override fun onResponse(call: Call<ArrayList<Item_feed>>, response: Response<ArrayList<Item_feed>>) {
+                if(response.isSuccessful){
+                    val json_arr = response.body()
+                    if (json_arr != null) {
+                        for(item : Item_feed in json_arr){
+                            val text = item.feed_context
+                            val date = item.feed_date
+                            val likes = item.feed_likes
+                            val pk = item.feed_pk
+                            mAdapter.addItem(Item_feed(date, text, likes, pk))
+                        }
+                    }
+
+                }
+            }
+
+        })
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_feed)
 
