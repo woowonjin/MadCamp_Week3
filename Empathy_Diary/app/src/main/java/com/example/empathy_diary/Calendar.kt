@@ -11,6 +11,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import java.lang.String.format
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Calendar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +22,13 @@ class Calendar : AppCompatActivity() {
 
 //        var intent: Intent
         var intent = Intent(this@Calendar, WriteDiary::class.java)
+
+        val date = Date(System.currentTimeMillis())
+        val mDate = SimpleDateFormat("yyyy/MM/dd")
+        var getTodayDate = mDate.format(date)
+
+        intent.putExtra("date", getTodayDate)
+
         val calendarView = findViewById<CalendarView>(R.id.calendarView)
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             var month_temp = ""
@@ -76,3 +86,4 @@ class Calendar : AppCompatActivity() {
 //        super.onBackPressed()
     }
 }
+
