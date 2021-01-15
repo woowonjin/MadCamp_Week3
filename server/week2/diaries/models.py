@@ -6,6 +6,7 @@ class Diary(core_models.TimeStampModel):
     text = models.TextField()
     user = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="diaries")
     background = models.ImageField(null=True, blank=True)
+    date = models.CharField(max_length=20, default="0000-00-00")
 
     DEPRESSION = "우울"
     ANGER = "분노"
@@ -19,3 +20,12 @@ class Diary(core_models.TimeStampModel):
 
     def __str__(self):
         return f"{self.text}"
+
+    def serialize_custom(self):
+        data = {
+            "feed_date" : self.date,
+            "feed_context" : self.text,
+            "feed_likes" : self.likes.count(),
+            "feed_pk" : self.pk
+        }
+        return data

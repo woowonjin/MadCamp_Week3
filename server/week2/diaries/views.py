@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from users import models as user_models
+from . import models as diary_models
 import json
 # Create your views here.
 
@@ -25,3 +26,17 @@ def diary(request):
 
     elif(request.method == "GET"):
         print("GET")
+
+@csrf_exempt
+@api_view(["GET"])
+def feeds(request):
+    if(request.method == "GET"):
+        diaries = diary_models.Diary.objects.all().order_by("-created")
+        # print(diaries)
+        diary_serialized = []
+        for d in diaries:
+            diary_serialized.append(d.serialize_custom())
+        # print(diary_serialized)
+        return Response(diary_serialized)
+    else:
+        return Response("{Result:Error}")

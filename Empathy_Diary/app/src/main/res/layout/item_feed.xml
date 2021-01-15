@@ -29,4 +29,29 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="right"
+        android:layout_marginRight="20dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_heart"/>
+        <TextView
+            android:id="@+id/likes_count"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="10"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColor="#ff4040"
+            android:layout_marginBottom="5dp" />
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

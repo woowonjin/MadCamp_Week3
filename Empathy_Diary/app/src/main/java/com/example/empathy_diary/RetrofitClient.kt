@@ -8,7 +8,8 @@ public class RetrofitClient {
     private var instance: Retrofit? = null
     private val gson = GsonBuilder().setLenient().create()
     //서버 주소
-    private val BASE_URL = "https://d296cd6b0b2e.ngrok.io/"
+
+    private val BASE_URL = "https://b93367aa7b7b.ngrok.io"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
