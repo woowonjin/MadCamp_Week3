@@ -18,22 +18,49 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout
 
 class MainActivity : AppCompatActivity() {
 
-    private var googleSignInClient : GoogleSignInClient? = null
+    private var googleSignInClient: GoogleSignInClient? = null
     private var retrofitClient = RetrofitClient()
+
+    lateinit var vpSlider : ViewPager2
+    lateinit var pagerAdapter : FragmentStateAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+            override fun getItemCount(): Int = 2
+
+            override fun createFragment(position: Int): Fragment {
+                return when(position){
+                    0 -> MainFragment()
+                    else -> CalendarFragment()
+                }
+            }
+        }
+
+//        val vpSlider = findViewById<ViewPager2>(R.id.ViewPager)
+//        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        vpSlider = findViewById<ViewPager2>(R.id.ViewPager)
+        pagerAdapter = ScreenSlidePagerAdapter(this)
+        vpSlider.adapter = pagerAdapter
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("442686102202-f37u9glbti9btdranin453kovcqq02dm.apps.googleusercontent.com")
@@ -42,18 +69,8 @@ class MainActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-
-        val logOutImg = findViewById<ImageView>(R.id.imageView_logout)
-
-//        logOut_img.setOnClickListener(View.OnClickListener {
-//            Firebase.auth.signOut()
-//            googleSignInClient!!.signOut()
-//            val intent = Intent(this, GoogleLoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        })
-
         val logOut: View.OnClickListener = View.OnClickListener{
+            Log.e("click?","click")
             Firebase.auth.signOut()
             googleSignInClient!!.signOut()
             val intent = Intent(this, GoogleLoginActivity::class.java)
@@ -61,24 +78,25 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        val logOutImg = findViewById<ImageView>(R.id.imageView_logout)
         val logOutText = findViewById<TextView>(R.id.textView_logout)
 
         logOutImg.setOnClickListener(logOut)
         logOutText.setOnClickListener(logOut)
 
-        val refreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_layout)
-
-        refreshLayout.setOnRefreshListener {
-            refreshLayout.isRefreshing = false
-            // 새로운 데이터 받아오기
+        val myDiariesText = findViewById<TextView>(R.id.textView_MyDiaries)
+        myDiariesText.setOnClickListener {
+            val intent = Intent(this@MainActivity, MyDiaries::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+            finish()
         }
-
-
 
         val similarText = findViewById<TextView>(R.id.textView_Similar)
         similarText.setOnClickListener{
             val intent = Intent(this@MainActivity, SimilarDiary::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()
         }
 
@@ -86,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         differentText.setOnClickListener {
             val intent = Intent(this@MainActivity, DifferentDiary::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()
         }
 
@@ -119,44 +138,17 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_feed)
-
-        val linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = mAdapter
-
-        findViewById<TextView>(R.id.todayDiary).setOnClickListener(ShowCalendar())
-
-        findViewById<TextView>(R.id.textView_myDiary).setOnClickListener(ShowMyDiaries())
-
-//        val refreshLayout = findViewById<CustomSwipeRefreshLayout>(R.id.swipe_layout)
-//
-//        refreshLayout.setOnRefreshListener {
-//            fun onRefresh(){
-//                feedList.add(Item_feed("12/23", "눈\n이\n왔\n다"))
-//            }
-//
-//            // 새로운 데이터 받아오기
-//
-//            refreshLayout.refreshComplete()
-//        }
-
     }
 
-    inner class ShowCalendar: View.OnClickListener{
-        override fun onClick(v: View?) {
-            val intent = Intent(this@MainActivity, Calendar::class.java)
-            startActivity(intent)
-            finish()
-        }
-    }
+    override fun onBackPressed() {
 
-    inner class ShowMyDiaries: View.OnClickListener{
-        override fun onClick(v: View?){
-            val intent = Intent(this@MainActivity, MyDiaries::class.java)
-            startActivity(intent)
-            finish()
+        if (vpSlider.currentItem == 0){
+            super.onBackPressed()
+//            finish()
         }
+        else{
+            vpSlider.currentItem = 0
+        }
+
     }
 }
