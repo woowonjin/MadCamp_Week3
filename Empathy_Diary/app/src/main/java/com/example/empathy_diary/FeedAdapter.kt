@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
@@ -82,10 +83,15 @@ class FeedAdapter(val context: Context, val feedList: ArrayList<Item_feed>):Recy
                                             if(response.body().toString() == "Create"){
                                                 //add 1 to likes
                                                 reviseItem(position, 1)
+                                                Toast.makeText(context, "공감해요", Toast.LENGTH_SHORT).show()
 
                                             }
-                                            else{ //Delete
+                                            else if(response.body().toString() == "Delete"){ //Delete
                                                 reviseItem(position, -1)
+                                                Toast.makeText(context, "공감 취소", Toast.LENGTH_SHORT).show()
+                                            }
+                                            else{
+                                                Log.d("Error", "Server Error")
                                             }
                                         }
                                     }
