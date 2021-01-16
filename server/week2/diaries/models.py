@@ -16,7 +16,8 @@ class Diary(core_models.TimeStampModel):
     HAPPY = "행복"
     emo_choice = ((DEPRESSION, DEPRESSION), (ANGER, ANGER), (ANXIETY, ANXIETY), (PAIN, PAIN), (PANIC, PANIC), (HAPPY, HAPPY))
     emotion = models.CharField(choices=emo_choice, max_length=20, default=HAPPY)
-    emo_percent = models.IntegerField()
+    emo_percent = models.IntegerField(default=50)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.text}"
