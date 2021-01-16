@@ -1,5 +1,6 @@
 package com.example.empathy_diary
 
+import android.content.ClipData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -27,4 +28,7 @@ interface ApiService {
 
     @GET("/diaries/opposite_feeds/")
     fun getOppositeFeeds(@Query("uid") uid: String) : Call<ArrayList<Item_feed>>
+
+    @GET("/diaries/day_diary/")
+    fun getDayDiary(@Query("uid") uid: String, @Query("date") date: String) : Call<Item_feed>
 }

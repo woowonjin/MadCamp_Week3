@@ -64,6 +64,11 @@ class FeedAdapter(val context: Context, val feedList: ArrayList<Item_feed>):Recy
         return feeds.size
     }
 
+    fun remove_all(){
+        feeds.clear()
+        notifyDataSetChanged()
+    }
+
     fun reviseItem(position: Int, value: Int){
         feeds[position].feed_likes = feeds[position].feed_likes.toInt() + value
         notifyDataSetChanged()

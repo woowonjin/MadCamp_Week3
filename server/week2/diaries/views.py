@@ -15,7 +15,7 @@ def diary(request):
         data_json = json.loads(request.body)
         uid = data_json["uid"]
         text = data_json["text"]
-        is_visible = data_json["is_visible"]
+        is_visible = not data_json["is_visible"]
         date = data_json["date"]
         try:
             user = user_models.User.objects.get(uid=uid)
@@ -97,5 +97,24 @@ def opposite_feeds(request):
         for diary in opposite_diaries:
             diary_serialized.append(diary.serialize_custom())
         return Response(diary_serialized)
+    else:
+        return Response("{Result:Error}")
+
+
+@csrf_exempt
+@api_view(["GET"])
+def day_diary(request):
+    if(request.method == "GET"):
+        try:
+            uid = request.GET.get("uid")
+            user = user_models.User.objects.get(uid=uid)
+            try:
+                date = request.GET.get("date")
+                diary = diary_models.Diary.objects.filter(user=user).get(date=date)
+                return Response(diary.serialize_custom())
+            except:
+                return Response("{Result:Not Exists}")
+        except:
+            return Response("{Result:Error}")
     else:
         return Response("{Result:Error}")
