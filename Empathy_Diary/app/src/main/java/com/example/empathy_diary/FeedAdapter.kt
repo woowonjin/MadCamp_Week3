@@ -1,11 +1,14 @@
 package com.example.empathy_diary
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
@@ -36,11 +39,14 @@ class FeedAdapter(val context: Context, val feedList: ArrayList<Item_feed>):Recy
         val feedContext = itemView?.findViewById<TextView>(R.id.feed_context)
         val feedLike = itemView?.findViewById<TextView>(R.id.likes_count)
         val itemView_on = itemView
-
+        val emotion = itemView?.findViewById<TextView>(R.id.emotion)
+        val like_image = itemView?.findViewById<ImageView>(R.id.like_image)
         fun bind(feed:Item_feed, context: Context){
             feedDate?.text = feed.feed_date
             feedContext?.text = feed.feed_context
             feedLike?.text = feed.feed_likes.toString()
+            like_image?.setColorFilter(Color.parseColor("#FF6F6E"))
+            emotion?.text = feed.emotion + " " + feed.percent.toString() + "%"
         }
     }
 
@@ -82,10 +88,14 @@ class FeedAdapter(val context: Context, val feedList: ArrayList<Item_feed>):Recy
                                             if(response.body().toString() == "Create"){
                                                 //add 1 to likes
                                                 reviseItem(position, 1)
-
+                                                Toast.makeText(context, "게시물에 공감하였습니다.", Toast.LENGTH_SHORT).show()
                                             }
-                                            else{ //Delete
+                                            else if(response.body().toString() == "Delete"){ //Delete
                                                 reviseItem(position, -1)
+                                                Toast.makeText(context, "게시물에 공감을 취소하였습니다.", Toast.LENGTH_SHORT).show()
+                                            }
+                                            else{
+                                                Log.d("Error", "Server Error")
                                             }
                                         }
                                     }

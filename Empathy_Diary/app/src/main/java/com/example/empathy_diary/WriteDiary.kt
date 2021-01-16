@@ -24,7 +24,6 @@ class WriteDiary : AppCompatActivity() {
 //            true
 //        }
 
-
         findViewById<TextView>(R.id.textView_showDate).text = intent.getStringExtra("date")
 
 //        findViewById<TextView>(R.id.textView_showDate).text = "123213"

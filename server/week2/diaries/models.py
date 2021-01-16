@@ -26,6 +26,8 @@ class Diary(core_models.TimeStampModel):
             "feed_date" : self.date,
             "feed_context" : self.text,
             "feed_likes" : self.likes.count(),
-            "feed_pk" : self.pk
+            "feed_pk" : self.pk,
+            "emotion" : self.emotion,
+            "percent" : self.emo_percent
         }
         return data

@@ -111,7 +111,9 @@ class MainActivity : AppCompatActivity() {
                             val date = item.feed_date
                             val likes = item.feed_likes
                             val pk = item.feed_pk
-                            mAdapter.addItem(Item_feed(date, text, likes, pk))
+                            val emotion = item.emotion
+                            val percent = item.percent
+                            mAdapter.addItem(Item_feed(date, text, likes, pk, emotion, percent))
                         }
                     }
 
