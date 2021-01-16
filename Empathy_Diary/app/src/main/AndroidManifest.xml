@@ -17,12 +17,11 @@
             android:label="@string/title_activity_different_diary"
             android:theme="@style/Theme.Empathy_Diary.NoActionBar"></activity>
         <activity
-            android:name=".SimilarDiary"
+            android:name=".DiarySimilar"
             android:label="@string/title_activity_similar_diary"
             android:theme="@style/Theme.Empathy_Diary.NoActionBar" />
         <activity android:name=".MyDiaries" />
         <activity android:name=".WriteDiary" />
-        <activity android:name=".Calendar" />
         <activity android:name=".MainActivity">
 
             <!-- <intent-filter> -->

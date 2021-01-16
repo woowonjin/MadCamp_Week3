@@ -15,4 +15,10 @@ interface ApiService {
 
     @POST("/likes/")
     fun like(@Body like : Like) : Call<String>
+
+    @POST("/diaries/diary/")
+    fun postDiary(@Body diary: PostDiary) : Call<String>
+
+    @GET("/diaries/similar_feeds/")
+    fun getSimilarFeeds(@Query("uid") uid : String) : Call<ArrayList<Item_feed>>
 }
