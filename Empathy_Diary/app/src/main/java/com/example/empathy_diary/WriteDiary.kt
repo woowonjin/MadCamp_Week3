@@ -24,16 +24,14 @@ class WriteDiary : AppCompatActivity() {
 //            true
 //        }
 
-        findViewById<TextView>(R.id.textView_showDate).text = intent.getStringExtra("date")
+        findViewById<TextView>(R.id.textView_showDate).text = intent?.getStringExtra("date").toString()
 
 //        findViewById<TextView>(R.id.textView_showDate).text = "123213"
     }
 
 
     override fun onBackPressed() {
-
-        val intent = Intent(this, Calendar::class.java)
-        startActivity(intent)
-        finish()
+        super.onBackPressed()
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }

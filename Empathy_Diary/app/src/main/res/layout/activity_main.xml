@@ -8,63 +8,10 @@
     tools:context=".MainActivity"
     android:id="@+id/drawerLayout">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="가장 최근 일기의 감정 분석 결과를 토대로 멘트"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="10dp"/>
-
-
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
-
-<!--        <com.reginald.swiperefresh.CustomSwipeRefreshLayout-->
-<!--            android:id="@+id/swipe_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:enable_top_progress_bar="true"-->
-<!--            app:keep_refresh_head="true"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
-<!--            app:refresh_mode="pull_mode"-->
-<!--            app:return_to_header_duration="500"-->
-<!--            app:return_to_top_duration="500"-->
-<!--            app:time_out_refresh_complete="2000"-->
-<!--            app:time_out_return_to_top="1000"-->
-<!--            app:top_progress_bar_color_1="@color/teal_200"-->
-<!--            app:top_progress_bar_color_2="#ee5522"-->
-<!--            app:top_progress_bar_color_3="#ffa600"-->
-<!--            app:top_progress_bar_color_4="@color/teal_200">-->
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_feed"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#00FFFFFF"
-                android:overScrollMode="never"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
-
-<!--        </com.reginald.swiperefresh.CustomSwipeRefreshLayout>-->
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent" />
 
 
 
@@ -76,28 +23,18 @@
         android:layout_gravity="left"
         android:gravity="left">
 
-
 <!--        android:layout_gravity="left"-->
 
         <TextView
-            android:id="@+id/todayDiary"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="오늘의 일기"
-            android:textSize="21sp"
-            android:clickable="true"
-            android:layout_marginTop="100dp"/>
-
-        <TextView
-            android:id="@+id/textView_myDiary"
+            android:id="@+id/textView_MyDiaries"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="모아보기"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:clickable="true"
-            android:layout_marginTop="14dp"/>
+            android:layout_marginTop="100dp"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/textView_Similar"
@@ -105,9 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="비슷한거"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:clickable="true"
-            android:layout_marginTop="14dp"/>
+            android:layout_marginTop="12dp"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/textView_Different"
@@ -115,9 +53,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="다른거"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:clickable="true"
-            android:layout_marginTop="14dp"/>
+            android:layout_marginTop="12dp"
+            android:focusable="true" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView_Different"-->
+<!--            android:layout_width="170dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:text="다른거"-->
+<!--            android:textSize="18sp"-->
+<!--            android:clickable="true"-->
+<!--            android:layout_marginTop="12dp"/>-->
 
         <LinearLayout
             android:layout_width="100dp"
@@ -143,6 +92,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
