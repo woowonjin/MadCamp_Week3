@@ -21,4 +21,10 @@ interface ApiService {
 
     @GET("/diaries/similar_feeds/")
     fun getSimilarFeeds(@Query("uid") uid : String) : Call<ArrayList<Item_feed>>
+
+    @GET("/diaries/diary/")
+    fun getMyDiary(@Query("uid") uid : String) : Call<ArrayList<Item_feed>>
+
+    @GET("/diaries/opposite_feeds/")
+    fun getOppositeFeeds(@Query("uid") uid: String) : Call<ArrayList<Item_feed>>
 }
