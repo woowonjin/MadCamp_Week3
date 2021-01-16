@@ -50,6 +50,11 @@ class CalendarFragment : Fragment() {
 
             intent.putExtra("date", "$year/$month_temp/$day_temp")
 
+
+            // 서버에서 날짜에 해당하는 유저 일기 받기
+
+//            view.findViewById<TextView>(R.id.textView_today).text = ""
+
         }
 
         view.findViewById<TextView>(R.id.textView_today).setOnClickListener {

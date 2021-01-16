@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
         val similarText = findViewById<TextView>(R.id.textView_Similar)
         similarText.setOnClickListener{
-            val intent = Intent(this@MainActivity, SimilarDiary::class.java)
+            val intent = Intent(this@MainActivity, DiarySimilar::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
 
         val differentText = findViewById<TextView>(R.id.textView_Different)
         differentText.setOnClickListener {
-            val intent = Intent(this@MainActivity, DifferentDiary::class.java)
+            val intent = Intent(this@MainActivity, DiaryDifferent::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()

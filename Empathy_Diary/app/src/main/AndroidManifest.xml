@@ -13,16 +13,15 @@
         android:theme="@style/Theme.Empathy_Diary"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".DifferentDiary"
-            android:label="@string/title_activity_different_diary"
-            android:theme="@style/Theme.Empathy_Diary.NoActionBar"></activity>
+            android:name=".DiaryDifferent"
+            android:label="DiaryDifferent"
+            android:theme="@style/Theme.Empathy_Diary.NoActionBar"/>
         <activity
-            android:name=".SimilarDiary"
-            android:label="@string/title_activity_similar_diary"
+            android:name=".DiarySimilar"
+            android:label="DiarySimilar"
             android:theme="@style/Theme.Empathy_Diary.NoActionBar" />
         <activity android:name=".MyDiaries" />
         <activity android:name=".WriteDiary" />
-        <activity android:name=".Calendar" />
         <activity android:name=".MainActivity">
 
             <!-- <intent-filter> -->

@@ -10,24 +10,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-class SimilarDiary : AppCompatActivity() {
+class DiarySimilar : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_similar_diary)
 
-        var feedList = arrayListOf<Item_feed>()
+        var feedListSimilar = arrayListOf<Item_feed>()
 
-//
-        val mAdapter = FeedAdapter(this, feedList)
+        val mAdapter = FeedAdapter(this, feedListSimilar)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_similar)
-
-        val text = "dfdf"
-        val date = "dffd"
-        val likes = 3
-        val pk = "dfdf"
-//        mAdapter?.addItem(Item_feed(date, text, likes, pk))
 
         val linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
@@ -36,18 +29,18 @@ class SimilarDiary : AppCompatActivity() {
         val refreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_layout_similar)
         refreshLayout.setOnRefreshListener {
             refreshLayout.isRefreshing = false
-//            feedList.add(Item_feed("12/23", "눈\n이\n왔\n다", 1, "d"))
-            // 새로운 데이터 받아오기
-            //
-            //
-//            mAdapter?.notifyDataSetChanged()
+            feedListSimilar.add(Item_feed("12/23", "눈\n이\n왔\n다", 1, "d", "행복", 50))
+//             새로운 데이터 받아오기
+
+
+            mAdapter?.notifyDataSetChanged()
 
             Log.d("refresh", "refresh")
         }
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this@SimilarDiary, MainActivity::class.java)
+        val intent = Intent(this@DiarySimilar, MainActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }

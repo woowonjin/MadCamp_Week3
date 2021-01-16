@@ -74,7 +74,6 @@ class MainFragment : Fragment() {
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = mAdapter
 
-//////////////////////////////////
         val refreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipe_layout)
         refreshLayout.setOnRefreshListener {
             refreshLayout.isRefreshing = false
