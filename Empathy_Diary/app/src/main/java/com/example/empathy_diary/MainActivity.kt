@@ -111,33 +111,33 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<DrawerLayout>(R.id.drawerLayout).closeDrawer(Gravity.LEFT)
 
-        var feedList = arrayListOf<Item_feed>()
-
-        val mAdapter = FeedAdapter(this, feedList)
-
-        val call = retrofitClient.apiService.getFeeds()
-        call!!.enqueue(object: Callback<ArrayList<Item_feed>> {
-            override fun onFailure(call: Call<ArrayList<Item_feed>>, t: Throwable) {
-                Log.d("Error", "Get Feeds Error")
-            }
-
-            override fun onResponse(call: Call<ArrayList<Item_feed>>, response: Response<ArrayList<Item_feed>>) {
-                if(response.isSuccessful){
-                    val json_arr = response.body()
-                    if (json_arr != null) {
-                        for(item : Item_feed in json_arr){
-                            val text = item.feed_context
-                            val date = item.feed_date
-                            val likes = item.feed_likes
-                            val pk = item.feed_pk
-                            mAdapter.addItem(Item_feed(date, text, likes, pk))
-                        }
-                    }
-
-                }
-            }
-
-        })
+//        var feedList = arrayListOf<Item_feed>()
+//
+//        val mAdapter = FeedAdapter(this, feedList)
+//
+//        val call = retrofitClient.apiService.getFeeds()
+//        call!!.enqueue(object: Callback<ArrayList<Item_feed>> {
+//            override fun onFailure(call: Call<ArrayList<Item_feed>>, t: Throwable) {
+//                Log.d("Error", "Get Feeds Error")
+//            }
+//
+//            override fun onResponse(call: Call<ArrayList<Item_feed>>, response: Response<ArrayList<Item_feed>>) {
+//                if(response.isSuccessful){
+//                    val json_arr = response.body()
+//                    if (json_arr != null) {
+//                        for(item : Item_feed in json_arr){
+//                            val text = item.feed_context
+//                            val date = item.feed_date
+//                            val likes = item.feed_likes
+//                            val pk = item.feed_pk
+//                            mAdapter.addItem(Item_feed(date, text, likes, pk))
+//                        }
+//                    }
+//
+//                }
+//            }
+//
+//        })
     }
 
     override fun onBackPressed() {

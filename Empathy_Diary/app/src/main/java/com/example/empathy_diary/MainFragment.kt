@@ -75,15 +75,16 @@ class MainFragment : Fragment() {
 //////////////////////////////////
         val refreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipe_layout)
         refreshLayout.setOnRefreshListener {
-            fun onRefresh(){
-                refreshLayout.isRefreshing = false
-                feedList.add(Item_feed("12/23", "눈\n이\n왔\n다", 1, "d"))
-                Log.e("refresh", "refresh")
+            refreshLayout.isRefreshing = false
+            feedList.add(Item_feed("12/23", "눈\n이\n왔\n다", 1, "d"))
+            // 새로운 데이터 받아오기
+            //
+            //
+            mAdapter?.notifyDataSetChanged()
+
+            Log.d("refresh", "refresh")
             }
 
-            // 새로운 데이터 받아오기
-
-        }
         return view
     }
 

@@ -29,25 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
-            <!--        <com.reginald.swiperefresh.CustomSwipeRefreshLayout-->
-            <!--            android:id="@+id/swipe_layout"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:enable_top_progress_bar="true"-->
-            <!--            app:keep_refresh_head="true"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent"-->
-            <!--            app:layout_constraintStart_toStartOf="parent"-->
-            <!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
-            <!--            app:refresh_mode="pull_mode"-->
-            <!--            app:return_to_header_duration="500"-->
-            <!--            app:return_to_top_duration="500"-->
-            <!--            app:time_out_refresh_complete="2000"-->
-            <!--            app:time_out_return_to_top="1000"-->
-            <!--            app:top_progress_bar_color_1="@color/teal_200"-->
-            <!--            app:top_progress_bar_color_2="#ee5522"-->
-            <!--            app:top_progress_bar_color_3="#ffa600"-->
-            <!--            app:top_progress_bar_color_4="@color/teal_200">-->
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_feed"
                 android:layout_width="match_parent"
@@ -58,10 +39,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
-            <!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
-
-            <!--        </com.reginald.swiperefresh.CustomSwipeRefreshLayout>-->
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
