@@ -33,7 +33,17 @@ def diary(request):
             return Response("{Result:Error}")
 
     elif(request.method == "GET"):
-        print("GET")
+        uid = request.GET.get("uid")
+        user = user_models.User.objects.get(uid=uid)
+        diaries = diary_models.Diary.objects.filter(user=user).order_by("-created")
+        # print(diaries)
+        diary_serialized = []
+        for d in diaries:
+            diary_serialized.append(d.serialize_custom())
+        # print(diary_serialized)
+        return Response(diary_serialized)
+    else:
+        return Response("{Result:Error}")
 
 @csrf_exempt
 @api_view(["GET"])
@@ -49,3 +59,43 @@ def feeds(request):
     else:
         return Response("{Result:Error}")
 
+@csrf_exempt
+@api_view(["GET"])
+def similar_feeds(request):
+    if(request.method == "GET"):
+        uid = request.GET.get("uid")
+        user = user_models.User.objects.get(uid=uid)
+        diaries = user.diaries.order_by("-created")
+        current_emotion = diaries[0].emotion
+        similar_diaries = []
+        if(current_emotion == diary_models.Diary.HAPPY):
+            similar_diaries = diary_models.Diary.objects.filter(emotion=current_emotion,is_visible=True).order_by("-created")
+        else: 
+            similar_diaries = diary_models.Diary.objects.exclude(emotion=diary_models.Diary.HAPPY).filter(is_visible=True).order_by("-created")
+        # similar_diaries = diary_models.Diary.objects.filter(emotion=current_emotion, is_visible=True).order_by("-created")
+        diary_serialized=[]
+        for diary in similar_diaries:
+            diary_serialized.append(diary.serialize_custom())
+        return Response(diary_serialized)
+    else:
+        return Response("{Result:Error}")
+
+@csrf_exempt
+@api_view(["GET"])
+def opposite_feeds(request):
+    if(request.method == "GET"):
+        uid = request.GET.get("uid")
+        user = user_models.User.objects.get(uid=uid)
+        diaries = user.diaries.order_by("-created")
+        current_emotion = diaries[0].emotion
+        opposite_diaries = []
+        if(current_emotion == diary_models.Diary.HAPPY):
+            opposite_diaries = diary_models.Diary.objects.exclude(emotion=current_emotion).filter(is_visible=True).order_by("-created")
+        else: 
+            opposite_diaries = diary_models.Diary.objects.filter(emotion=diary_models.Diary.HAPPY, is_visible=True).order_by("-created")
+        diary_serialized=[]
+        for diary in opposite_diaries:
+            diary_serialized.append(diary.serialize_custom())
+        return Response(diary_serialized)
+    else:
+        return Response("{Result:Error}")
