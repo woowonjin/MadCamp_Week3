@@ -34,7 +34,6 @@ class CalendarFragment : Fragment() {
         val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
 
-
             var month_temp = ""
             month_temp = if(month < 9){
                 "0" + (month+1).toString()
@@ -50,6 +49,7 @@ class CalendarFragment : Fragment() {
             }
 
             intent.putExtra("date", "$year/$month_temp/$day_temp")
+
         }
 
         view.findViewById<TextView>(R.id.textView_today).setOnClickListener {
