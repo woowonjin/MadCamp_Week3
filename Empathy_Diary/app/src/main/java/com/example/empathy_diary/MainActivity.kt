@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
         if (vpSlider.currentItem == 0){
             super.onBackPressed()
-//            finish()
+            finish()
         }
         else{
             vpSlider.currentItem = 0

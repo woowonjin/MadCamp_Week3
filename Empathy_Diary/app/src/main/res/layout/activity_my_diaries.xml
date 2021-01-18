@@ -10,7 +10,7 @@
         android:id="@+id/textView_my_diaries_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="내 일기 모아보기"
+        android:text="나의 기록들."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

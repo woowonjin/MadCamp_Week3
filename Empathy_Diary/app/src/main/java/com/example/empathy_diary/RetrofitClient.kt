@@ -9,7 +9,7 @@ public class RetrofitClient {
     private val gson = GsonBuilder().setLenient().create()
     //서버 주소
 
-    private val BASE_URL = "https://eb8d4b4ad321.ngrok.io"
+    private val BASE_URL = "http://192.168.0.40:8000"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

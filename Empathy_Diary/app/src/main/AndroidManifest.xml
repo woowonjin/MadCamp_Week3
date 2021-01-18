@@ -12,14 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Empathy_Diary"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".DiaryDifferent"
-            android:label="DiaryDifferent"
-            android:theme="@style/Theme.Empathy_Diary.NoActionBar"/>
-        <activity
-            android:name=".DiarySimilar"
-            android:label="@string/title_activity_similar_diary"
-            android:theme="@style/Theme.Empathy_Diary.NoActionBar" />
+        <activity android:name=".DiaryDifferent"/>
+<!--            android:label="DiaryDifferent"-->
+<!--            android:theme="@style/Theme.Empathy_Diary.NoActionBar"/>-->
+        <activity android:name=".DiarySimilar" />
+<!--            android:label="@string/title_activity_similar_diary"-->
+<!--            android:theme="@style/Theme.Empathy_Diary.NoActionBar" />-->
         <activity android:name=".MyDiaries" />
         <activity android:name=".WriteDiary" />
         <activity android:name=".MainActivity">
