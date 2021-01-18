@@ -10,7 +10,7 @@
         android:id="@+id/textView_different_emotion"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="비슷한 감정 이름"
+        android:text="나와 다른 감정들의 기록."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

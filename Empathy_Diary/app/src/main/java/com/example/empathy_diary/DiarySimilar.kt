@@ -91,6 +91,7 @@ class DiarySimilar : AppCompatActivity() {
     override fun onBackPressed() {
         val intent = Intent(this@DiarySimilar, MainActivity::class.java)
         startActivity(intent)
+        finish()
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }

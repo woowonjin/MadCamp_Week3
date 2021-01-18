@@ -99,6 +99,7 @@ class MyDiaries : AppCompatActivity() {
     override fun onBackPressed() {
         val intent = Intent(this@MyDiaries, MainActivity::class.java)
         startActivity(intent)
+        finish()
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }
