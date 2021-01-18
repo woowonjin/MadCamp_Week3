@@ -17,6 +17,17 @@ def diary(request):
         text = data_json["text"]
         is_visible = not data_json["is_visible"]
         date = data_json["date"]
+        emotion_str = data_json["emotion"]
+        percent = data_json["percent"]
+        emotion = diary_models.Diary.HAPPY
+        if(emotion_str == "행복"):
+            pass
+        elif(emotion_str == "슬픔"):
+            emotion = diary_models.Diary.DEPRESSION
+        elif(emotion_str == "분노"):
+            emotion = diary_models.Diary.ANGER
+        elif(emotion_str == "불안"):
+            emotion = diary_models.Diary.ANXIETY 
         try:
             user = user_models.User.objects.get(uid=uid)
             # 감정에 따라서 background 설정한 후 object 저장
@@ -25,7 +36,7 @@ def diary(request):
                 # Error
                 return Response("{Result:Already Exists}")
             except:
-                diary = diary_models.Diary.objects.create(user=user, text=text, is_visible=is_visible, date=date)
+                diary = diary_models.Diary.objects.create(user=user, text=text, is_visible=is_visible, date=date, emotion=emotion, emo_percent=int(percent))
                 diary.save()
                 return Response("{Result:Success}")
         except:
@@ -67,11 +78,8 @@ def similar_feeds(request):
         user = user_models.User.objects.get(uid=uid)
         diaries = user.diaries.order_by("-created")
         current_emotion = diaries[0].emotion
-        similar_diaries = []
-        if(current_emotion == diary_models.Diary.HAPPY):
-            similar_diaries = diary_models.Diary.objects.filter(emotion=current_emotion,is_visible=True).order_by("-created")
-        else: 
-            similar_diaries = diary_models.Diary.objects.exclude(emotion=diary_models.Diary.HAPPY).filter(is_visible=True).order_by("-created")
+        print(current_emotion)
+        similar_diaries = diary_models.Diary.objects.filter(emotion=current_emotion,is_visible=True).order_by("-created")
         # similar_diaries = diary_models.Diary.objects.filter(emotion=current_emotion, is_visible=True).order_by("-created")
         diary_serialized=[]
         for diary in similar_diaries:

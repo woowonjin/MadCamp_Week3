@@ -8,13 +8,11 @@ class Diary(core_models.TimeStampModel):
     background = models.ImageField(null=True, blank=True)
     date = models.CharField(max_length=20, default="0000-00-00")
 
-    DEPRESSION = "우울"
+    DEPRESSION = "슬픔"
     ANGER = "분노"
     ANXIETY = "불안"
-    PAIN = "고통"
-    PANIC = "당황"
     HAPPY = "행복"
-    emo_choice = ((DEPRESSION, DEPRESSION), (ANGER, ANGER), (ANXIETY, ANXIETY), (PAIN, PAIN), (PANIC, PANIC), (HAPPY, HAPPY))
+    emo_choice = ((DEPRESSION, DEPRESSION), (ANGER, ANGER), (ANXIETY, ANXIETY), (HAPPY, HAPPY))
     emotion = models.CharField(choices=emo_choice, max_length=20, default=HAPPY)
     emo_percent = models.IntegerField(default=50)
     is_visible = models.BooleanField(default=True)
