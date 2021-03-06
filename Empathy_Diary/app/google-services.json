@@ -14,6 +14,67 @@
       },
       "oauth_client": [
         {
+          "client_id": "442686102202-757f77u6sedki1faj20jah4j0e7ih7jt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.empathy_diary",
+            "certificate_hash": "466c5783dfc197d6075a9080099d5526e1ae9523"
+          }
+        },
+        {
+          "client_id": "442686102202-k5d673eu30kuomi49fmlaaaf6fqmnrnc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.empathy_diary",
+            "certificate_hash": "4707fe81c6c7ec9e2a45868b87a6d66a4b95381d"
+          }
+        },
+        {
+          "client_id": "442686102202-l8tmdoqsnmbnh7jog89a7p7sg1rvmvjl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.empathy_diary",
+            "certificate_hash": "6e9fd1c8b8cef832052dd10a88e45bc53385be6c"
+          }
+        },
+        {
+          "client_id": "442686102202-f37u9glbti9btdranin453kovcqq02dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2yec4FpPFf4K21TqG0NjoOCs7o6YU2zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442686102202-f37u9glbti9btdranin453kovcqq02dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442686102202:android:1e81820785411e2d28c083",
+        "android_client_info": {
+          "package_name": "com.madcamp.empathy_diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442686102202-fsqmurvbp46d7fkgq4eeqt6br9efhprp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.madcamp.empathy_diary",
+            "certificate_hash": "466c5783dfc197d6075a9080099d5526e1ae9523"
+          }
+        },
+        {
           "client_id": "442686102202-f37u9glbti9btdranin453kovcqq02dm.apps.googleusercontent.com",
           "client_type": 3
         }
