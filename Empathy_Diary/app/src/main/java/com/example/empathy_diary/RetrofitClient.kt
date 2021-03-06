@@ -9,7 +9,7 @@ public class RetrofitClient {
     private val gson = GsonBuilder().setLenient().create()
     //서버 주소
 
-    private val BASE_URL = "http://192.249.18.156:8000"
+    private val BASE_URL = "http://ec2-54-180-97-246.ap-northeast-2.compute.amazonaws.com:8000"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
